@@ -19,12 +19,12 @@ import {
 import Navigation from "../components/navigation";
 import { useSession } from "next-auth/client";
 import * as dayjs from "dayjs";
-import * as relativeTime from "dayjs/plugin/RelativeTime"; // import plugin
-import * as advancedFormat from "dayjs/plugin/advancedFormat";
+// import * as relativeTime from "dayjs/plugin/RelativeTime"; // import plugin
+// import * as advancedFormat from "dayjs/plugin/advancedFormat";
 import { AddIcon, LinkIcon } from "@chakra-ui/icons";
 
-dayjs.extend(relativeTime);
-dayjs.extend(advancedFormat);
+// dayjs.extend(relativeTime);
+// dayjs.extend(advancedFormat);
 
 export default function Home() {
     const [session, loading] = useSession();
@@ -144,7 +144,8 @@ function CalendarItem({ cal }) {
                 fontSize="sm"
                 color={useColorModeValue("gray.600", "gray.400")}
             >
-                {dayjs().to(cal.start)} • {dayjs(cal.start).format("dddd, MMMM Do h:mm A")}
+                {/*{dayjs().to(cal.start)} •*/}
+                {dayjs(cal.start).format("dddd, MMMM D h:mm A")}
             </chakra.span>
             <Text
                 px={3}
