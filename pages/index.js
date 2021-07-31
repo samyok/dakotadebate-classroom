@@ -145,6 +145,7 @@ function CalendarItem({ cal }) {
                 color={useColorModeValue("gray.600", "gray.400")}
             >
                 {/*{dayjs().to(cal.start)} •*/}
+
                 {dayjs(cal.start).format("dddd, MMMM D h:mm A")}
             </chakra.span>
             <Text
