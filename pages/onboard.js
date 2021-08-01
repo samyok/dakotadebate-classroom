@@ -41,7 +41,7 @@ export default function Home() {
             <main>
                 <Navigation />
                 <Box p={[2, 4, 8]}>
-                    {(loading || session) && <Text>Loading...</Text>}
+                    {(loading || session) && <Text>Loading...This may take a couple seconds. We're connecting to Discord to automatically add you to the server.</Text>}
                     {(!loading && !session) &&
                     <>
                         <Heading size={"2xl"} mb={3}>Welcome, Samyok!</Heading>

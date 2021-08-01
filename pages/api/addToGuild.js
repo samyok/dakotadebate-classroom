@@ -42,8 +42,8 @@ export default async function Hello(req, res) {
 
     let guild = await bot.guilds.fetch("858774360268734525");
     let role = await guild.roles.fetch("871052067832217650");
-
-    await guild.addMember("787051080097202199", {
+    console.log('a2g', { account });
+    await guild.addMember(account.providerAccountId, {
         accessToken: account.accessToken,
         nick: rslt.studentFirstName + " " + rslt.studentLastName,
         roles: [role],
