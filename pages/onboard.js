@@ -54,7 +54,7 @@ export default function Home() {
                         <Heading size={"2xl"} mb={3}>Welcome, {name}!</Heading>
                         <chakra.p my={2}>Class starts on August 2nd, and you need to make your Discord account!
                         </chakra.p>
-                        <chakra.p my={2}>Never used Discord before? You will need to make an account and come back. Click the "Discord tutorial" button to view a tutorial.</chakra.p>
+                        <chakra.p my={2}>Never used Discord before? You will need to make an account and come back. Click the &quot;Discord tutorial&quot; button to view a tutorial.</chakra.p>
                         <chakra.p my={2}>You&apos;ll automatically be joined into the Discord, no invite links required.
                         </chakra.p>
                         <chakra.p my={2}>If you&apos;re not {name}, please check your email for your own unique link.</chakra.p>
