@@ -36,6 +36,7 @@ export default function Home() {
         label: "Past Classes",
         content: "Past classes will appear here as they become available.",
     }];
+    let tabBorderLeft = useColorModeValue("1px solid rgba(112, 70, 234, 0.6)", "1px solid rgba(112, 70, 234, 0.2)")
     return (
         <div>
             <Head>
@@ -58,7 +59,7 @@ export default function Home() {
                         <TabPanels>
                             {data.map((tab, index) => (
                                 <TabPanel ml={4} h={"100%"} key={index}
-                                          borderLeft={"1px solid rgba(112, 70, 234, 0.6)"}>
+                                          borderLeft={tabBorderLeft}>
                                     {tab.content}
                                 </TabPanel>
                             ))}
