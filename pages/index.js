@@ -19,7 +19,7 @@ import {
 import Navigation from "../components/navigation";
 import { useSession } from "next-auth/client";
 import * as dayjs from "dayjs";
-import * as relativeTime from "dayjs/plugin/RelativeTime"; // import plugin
+import * as relativeTime from "dayjs/plugin/relativeTime"; // import plugin
 import * as advancedFormat from "dayjs/plugin/advancedFormat";
 import { AddIcon, LinkIcon } from "@chakra-ui/icons";
 
