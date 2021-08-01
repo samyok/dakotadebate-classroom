@@ -8,10 +8,17 @@ export default function Home() {
     const [session, loading] = useSession();
 
     const [regis, setRegis] = useState("");
+
+    const [name, setName] = useState('');
+
     useEffect(() => {
         let query = new URLSearchParams(window.location.search);
         setRegis(query.get("r"));
+        fetch('/api/getUserNameFromRegistration?r=' + query.get('r'))
+            .then(r => r.json())
+            .then(r => setName(r.name));
     }, []);
+
     useEffect(() => {
         if (session && regis) {
             if (!session.customData) {
@@ -41,15 +48,16 @@ export default function Home() {
             <main>
                 <Navigation />
                 <Box p={[2, 4, 8]}>
-                    {(loading || session) && <Text>Loading...This may take a couple seconds. We're connecting to Discord to automatically add you to the server.</Text>}
+                    {(loading || session) && <Text>Loading...This may take a couple seconds. We&apos;re connecting to Discord to automatically add you to the server.</Text>}
                     {(!loading && !session) &&
                     <>
-                        <Heading size={"2xl"} mb={3}>Welcome, Samyok!</Heading>
+                        <Heading size={"2xl"} mb={3}>Welcome, {name}!</Heading>
                         <chakra.p my={2}>Class starts on August 2nd, and you need to make your Discord account!
                         </chakra.p>
                         <chakra.p my={2}>Never used Discord before? Click below to view a tutorial.</chakra.p>
                         <chakra.p my={2}>You&apos;ll automatically be joined into the Discord, no invite links required!
                         </chakra.p>
+                        <chakra.p my={2}>If you&apos;re not {name}, please check your email for your own unique link.</chakra.p>
                         <HStack mt={4}><Button
                             onClick={() => signIn("discord")}
                             colorScheme={"purple"} variant={"solid"}>Connect Discord Account to DDI</Button> <Button
