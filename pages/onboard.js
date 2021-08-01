@@ -55,7 +55,7 @@ export default function Home() {
                         <chakra.p my={2}>Class starts on August 2nd, and you need to make your Discord account!
                         </chakra.p>
                         <chakra.p my={2}>Never used Discord before? Click below to view a tutorial.</chakra.p>
-                        <chakra.p my={2}>You&apos;ll automatically be joined into the Discord, no invite links required!
+                        <chakra.p my={2}>You&apos;ll automatically be joined into the Discord, no invite links required.
                         </chakra.p>
                         <chakra.p my={2}>If you&apos;re not {name}, please check your email for your own unique link.</chakra.p>
                         <HStack mt={4}><Button
