@@ -180,7 +180,7 @@ function Calendar() {
             start: "8/2/21 6:30 PM",
             details: "We'll play games like mafia, Quizlet live, Minecraft bedwars, Skribbl, etc. Staff will be organizing various activities in the Discord. Click the signup button below so we know how many people to plan for :)",
             type: "discord",
-            signup: true,
+            // signup: true,
         },
     ];
     return (
