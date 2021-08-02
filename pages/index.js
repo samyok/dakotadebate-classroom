@@ -79,6 +79,7 @@ function Calendar() {
             name: "Introduction to DDI and Debate",
             start: "8/2/21 1:00 PM",
             end: "8/2/21 2:00 PM",
+            link: "https://zoom.us/j/98656043522?pwd=RXlPaG5wbVRoVnF3MUx2VWFOMUJaZz09",
             type: "zoom",
             signup: false,
         },
@@ -86,6 +87,7 @@ function Calendar() {
             name: "Basics of Research",
             start: "8/2/21 2:00 PM",
             end: "8/2/21 3:00 PM",
+            link: "https://zoom.us/j/98656043522?pwd=RXlPaG5wbVRoVnF3MUx2VWFOMUJaZz09",
             type: "zoom",
             signup: false,
         },
@@ -94,6 +96,7 @@ function Calendar() {
             start: "8/2/21 3:00 PM",
             end: "8/2/21 4:00 PM",
             type: "zoom",
+            link: "https://zoom.us/j/98656043522?pwd=RXlPaG5wbVRoVnF3MUx2VWFOMUJaZz09",
             signup: false,
         },
         {
@@ -101,6 +104,7 @@ function Calendar() {
             start: "8/2/21 4:00 PM",
             end: "8/2/21 4:30 PM",
             type: "zoom",
+            link: "https://zoom.us/j/98656043522?pwd=RXlPaG5wbVRoVnF3MUx2VWFOMUJaZz09",
             signup: false,
         },
         {
