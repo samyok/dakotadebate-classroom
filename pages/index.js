@@ -34,7 +34,64 @@ export default function Home() {
         content: "After you finalize your type of debate at the end of class on Monday, you can sign up for office hours here. Feel free to join a Discord call if you see a staff member available, too!",
     }, {
         label: "Past Classes",
-        content: "Past classes will appear here as they become available.",
+        content: <Box
+            mx="auto"
+            px={8}
+            w={"100%"}
+            py={4}
+            rounded="lg"
+            shadow="lg"
+            bg={useColorModeValue("white", "gray.800")}
+            maxW="2xl"
+        >
+            <Flex justifyContent="space-between" alignItems="center">
+                <chakra.span
+                    fontSize="sm"
+                    color={useColorModeValue("gray.600", "gray.400")}
+                >
+                    Monday, August 1
+                </chakra.span>
+                <Text
+                    px={3}
+                    py={1}
+                    bg="gray.600"
+                    color="gray.100"
+                    fontSize="sm"
+                    fontWeight="700"
+                    rounded="md"
+                >
+                    General
+                </Text>
+            </Flex>
+
+            <Box mt={2} mb={4}>
+                <Heading
+
+                    fontSize="2xl"
+                    color={useColorModeValue("gray.700", "white")}
+                    fontWeight="700"
+                >
+                    Introduction Day
+                </Heading>
+                <chakra.p mt={2} color={useColorModeValue("gray.600", "gray.300")}
+                          >
+                    Everything from day 1 was in one big meeting.
+                </chakra.p>
+            </Box>
+
+            <HStack>
+                <Button leftIcon={<LinkIcon />} disabled colorScheme="blue" variant="solid" onClick={() => {
+                    alert("Video isn't done processing yet, give us until about 6:30 maybe?");
+                }}>
+                    Recorded Zoom Video
+                </Button>
+                <Button leftIcon={<LinkIcon />} colorScheme="yellow" variant="solid" onClick={() => {
+                    window.open('https://docs.google.com/presentation/d/1iBmmMU6RbrC5SAOA5RTEUvNGNzzlBXQG1mjPA7FECUo/edit#slide=id.ga25f85cae5_0_0', '_blank');
+                }}>
+                    Slides
+                </Button>
+            </HStack>
+        </Box>,
     }];
     let tabBorderLeft = useColorModeValue("1px solid rgba(112, 70, 234, 0.6)", "1px solid rgba(112, 70, 234, 0.2)")
     return (
@@ -83,37 +140,37 @@ function Calendar() {
             type: "zoom",
             signup: false,
         },
-        {
-            name: "Basics of Research",
-            start: "8/2/21 2:00 PM",
-            end: "8/2/21 3:00 PM",
-            link: "https://zoom.us/j/98656043522?pwd=RXlPaG5wbVRoVnF3MUx2VWFOMUJaZz09",
-            type: "zoom",
-            signup: false,
-        },
-        {
-            name: "Inclusivity talk",
-            start: "8/2/21 3:00 PM",
-            end: "8/2/21 4:00 PM",
-            type: "zoom",
-            link: "https://zoom.us/j/98656043522?pwd=RXlPaG5wbVRoVnF3MUx2VWFOMUJaZz09",
-            signup: false,
-        },
-        {
-            name: "Types of debate/topic summaries",
-            start: "8/2/21 4:00 PM",
-            end: "8/2/21 4:30 PM",
-            type: "zoom",
-            link: "https://zoom.us/j/98656043522?pwd=RXlPaG5wbVRoVnF3MUx2VWFOMUJaZz09",
-            signup: false,
-        },
-        {
-            name: "Discord Polls/Partner Match/Signup for evening activities",
-            start: "8/2/21 4:30 PM",
-            end: "8/2/21 5:00 PM",
-            type: "discord",
-            signup: false,
-        },
+        // {
+        //     name: "Basics of Research",
+        //     start: "8/2/21 2:00 PM",
+        //     end: "8/2/21 3:00 PM",
+        //     link: "https://zoom.us/j/98656043522?pwd=RXlPaG5wbVRoVnF3MUx2VWFOMUJaZz09",
+        //     type: "zoom",
+        //     signup: false,
+        // },
+        // {
+        //     name: "Inclusivity talk",
+        //     start: "8/2/21 3:00 PM",
+        //     end: "8/2/21 4:00 PM",
+        //     type: "zoom",
+        //     link: "https://zoom.us/j/98656043522?pwd=RXlPaG5wbVRoVnF3MUx2VWFOMUJaZz09",
+        //     signup: false,
+        // },
+        // {
+        //     name: "Types of debate/topic summaries",
+        //     start: "8/2/21 4:00 PM",
+        //     end: "8/2/21 4:30 PM",
+        //     type: "zoom",
+        //     link: "https://zoom.us/j/98656043522?pwd=RXlPaG5wbVRoVnF3MUx2VWFOMUJaZz09",
+        //     signup: false,
+        // },
+        // {
+        //     name: "Discord Polls/Partner Match/Signup for evening activities",
+        //     start: "8/2/21 4:30 PM",
+        //     end: "8/2/21 5:00 PM",
+        //     type: "discord",
+        //     signup: false,
+        // },
         {
             name: "Break",
             start: "8/2/21 5:00 PM",
