@@ -6,7 +6,6 @@ import {
     Flex,
     Heading,
     HStack,
-    Link,
     Tab,
     TabList,
     TabPanel,
@@ -74,7 +73,7 @@ export default function Home() {
                     Introduction Day
                 </Heading>
                 <chakra.p mt={2} color={useColorModeValue("gray.600", "gray.300")}
-                          >
+                >
                     Everything from day 1 was in one big meeting.
                 </chakra.p>
             </Box>
@@ -86,14 +85,14 @@ export default function Home() {
                     Recorded Zoom Video
                 </Button>
                 <Button leftIcon={<LinkIcon />} colorScheme="yellow" variant="solid" onClick={() => {
-                    window.open('https://docs.google.com/presentation/d/1iBmmMU6RbrC5SAOA5RTEUvNGNzzlBXQG1mjPA7FECUo/edit#slide=id.ga25f85cae5_0_0', '_blank');
+                    window.open("https://docs.google.com/presentation/d/1iBmmMU6RbrC5SAOA5RTEUvNGNzzlBXQG1mjPA7FECUo/edit#slide=id.ga25f85cae5_0_0", "_blank");
                 }}>
                     Slides
                 </Button>
             </HStack>
         </Box>,
     }];
-    let tabBorderLeft = useColorModeValue("1px solid rgba(112, 70, 234, 0.6)", "1px solid rgba(112, 70, 234, 0.2)")
+    let tabBorderLeft = useColorModeValue("1px solid rgba(112, 70, 234, 0.6)", "1px solid rgba(112, 70, 234, 0.2)");
     return (
         <div>
             <Head>
@@ -105,6 +104,11 @@ export default function Home() {
 
             <main>
                 <Navigation />
+                {Date.now() < 1627947178962 && <Flex justifyContent={"center"}>
+                    <Button variant={"solid"} flexGrow={1} colorScheme={"red"} m={5} onClick={() => {
+                        window.open("https://forms.gle/LAW57Aza63npbuXL6", "_blank");
+                    }}>DEBATE SELECTION FORM</Button>
+                </Flex>}
                 {session?.customData?.registration &&
                 <Box p={[2, 4, 8]}>
                     <Tabs isManual orientation={"vertical"} variant={"soft-rounded"} colorScheme={"purple"}>
@@ -124,7 +128,8 @@ export default function Home() {
                     </Tabs>
                 </Box>}
                 {(!loading && !session?.customData?.registration) && <Box p={[2, 4, 8]}>
-                    <Text>Login to view this content! If this is your first time logging in, please check your email for a link to sign up.</Text></Box>}
+                    <Text>Login to view this content! If this is your first time logging in, please check your email for
+                        a link to sign up.</Text></Box>}
             </main>
         </div>
     );
