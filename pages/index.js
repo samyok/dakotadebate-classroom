@@ -204,13 +204,13 @@ function Calendar() {
         <VStack spacing={8}>
             <HStack>
                 <Tag onClick={() => setFilter(p => p === "LD" ? "" : "LD")}
-                     bg={filter === "LD" ? useColorModeValue("gray.300", "gray.600") : null}
+                     bg={useColorModeValue(filter === "LD" ? "gray.300" : null, filter === "LD" ? "gray.600" : null)}
                      _hover={{
                          bg: useColorModeValue("gray.300", "gray.600"),
                          cursor: "pointer",
                      }}>LD</Tag>
                 <Tag onClick={() => setFilter(p => p === "PF" ? "" : "PF")}
-                     bg={filter === "PF" ? useColorModeValue("gray.300", "gray.600") : null}
+                     bg={useColorModeValue(filter === "PF" ? "gray.300" : null, filter === "PF" ? "gray.600" : null)}
                      _hover={{
                          bg: useColorModeValue("gray.300", "gray.600"),
                          cursor: "pointer",
@@ -218,12 +218,12 @@ function Calendar() {
             </HStack>
             {data
                 .filter(a => !a.tag || a.tag.includes(filter))
-                .map((cal, i) => <CalendarItem cal={cal} key={`cal-item-${i + 1}`}/>)}
+                .map((cal, i) => <CalendarItem cal={cal} key={`cal-item-${i + 1}`} />)}
         </VStack>
     );
 }
 
-function CalendarItem({ cal }){
+function CalendarItem({ cal }) {
     const [session, loading] = useSession();
 
     const signupProperty = (cal.name + " " + cal.start).replace(/[^A-Za-z0-9]/g, "_");
@@ -274,7 +274,8 @@ function CalendarItem({ cal }){
             </chakra.p>
         </Box>
         <HStack>
-            {(showButton && cal.type === "zoom") && <Button leftIcon={<LinkIcon />} colorScheme="blue" variant="solid" onClick={() => {
+            {(showButton && cal.type === "zoom") &&
+            <Button leftIcon={<LinkIcon />} colorScheme="blue" variant="solid" onClick={() => {
                 if (cal.link) location.href = cal.link;
                 else alert("Link not available yet! Come back when it's about to start.");
             }}>
