@@ -11,6 +11,7 @@ import {
     TabPanel,
     TabPanels,
     Tabs,
+    Tag,
     Text,
     useColorModeValue,
     VStack,
@@ -21,6 +22,7 @@ import * as dayjs from "dayjs";
 import * as relativeTime from "dayjs/plugin/relativeTime"; // import plugin
 import * as advancedFormat from "dayjs/plugin/advancedFormat";
 import { AddIcon, LinkIcon } from "@chakra-ui/icons";
+import { useState } from "react";
 
 dayjs.extend(relativeTime);
 dayjs.extend(advancedFormat);
@@ -79,8 +81,8 @@ export default function Home() {
             </Box>
 
             <HStack>
-                <Button leftIcon={<LinkIcon />} disabled colorScheme="blue" variant="solid" onClick={() => {
-                    alert("Video isn't done processing yet, give us until about 6:30 maybe?");
+                <Button leftIcon={<LinkIcon />} colorScheme="blue" variant="solid" onClick={() => {
+                    window.open("https://youtu.be/verMLyj3OIY", "_blank");
                 }}>
                     Recorded Zoom Video
                 </Button>
@@ -104,11 +106,11 @@ export default function Home() {
 
             <main>
                 <Navigation />
-                {Date.now() < 1627947178962 && <Flex justifyContent={"center"}>
-                    <Button variant={"solid"} flexGrow={1} colorScheme={"red"} m={5} onClick={() => {
-                        window.open("https://forms.gle/LAW57Aza63npbuXL6", "_blank");
-                    }}>DEBATE SELECTION FORM</Button>
-                </Flex>}
+                {/*<Flex justifyContent={"center"}>*/}
+                {/*    <Button variant={"solid"} flexGrow={1} colorScheme={"red"} m={5} onClick={() => {*/}
+                {/*        window.open("https://forms.gle/LAW57Aza63npbuXL6", "_blank");*/}
+                {/*    }}>DEBATE SELECTION FORM</Button>*/}
+                {/*</Flex>*/}
                 {session?.customData?.registration &&
                 <Box p={[2, 4, 8]}>
                     <Tabs isManual orientation={"vertical"} variant={"soft-rounded"} colorScheme={"purple"}>
@@ -138,64 +140,95 @@ export default function Home() {
 function Calendar() {
     const data = [
         {
-            name: "Introduction to DDI and Debate",
-            start: "8/2/21 1:00 PM",
+            name: "DDI Day 2",
+            start: "8/3/21 1:00 PM",
             end: "8/2/21 2:00 PM",
-            link: "https://zoom.us/j/98656043522?pwd=RXlPaG5wbVRoVnF3MUx2VWFOMUJaZz09",
+            link: "https://zoom.us/j/93804274751?pwd=RE1MZjBEbEFySFZnbndmS2tYeW0xdz09",
             type: "zoom",
+            details: "We're going to do lectures in breakout rooms of the same zoom from now on, it makes it easier on us :)",
             signup: false,
+            tag: "LD + PF",
         },
-        // {
-        //     name: "Basics of Research",
-        //     start: "8/2/21 2:00 PM",
-        //     end: "8/2/21 3:00 PM",
-        //     link: "https://zoom.us/j/98656043522?pwd=RXlPaG5wbVRoVnF3MUx2VWFOMUJaZz09",
-        //     type: "zoom",
-        //     signup: false,
-        // },
-        // {
-        //     name: "Inclusivity talk",
-        //     start: "8/2/21 3:00 PM",
-        //     end: "8/2/21 4:00 PM",
-        //     type: "zoom",
-        //     link: "https://zoom.us/j/98656043522?pwd=RXlPaG5wbVRoVnF3MUx2VWFOMUJaZz09",
-        //     signup: false,
-        // },
-        // {
-        //     name: "Types of debate/topic summaries",
-        //     start: "8/2/21 4:00 PM",
-        //     end: "8/2/21 4:30 PM",
-        //     type: "zoom",
-        //     link: "https://zoom.us/j/98656043522?pwd=RXlPaG5wbVRoVnF3MUx2VWFOMUJaZz09",
-        //     signup: false,
-        // },
-        // {
-        //     name: "Discord Polls/Partner Match/Signup for evening activities",
-        //     start: "8/2/21 4:30 PM",
-        //     end: "8/2/21 5:00 PM",
-        //     type: "discord",
-        //     signup: false,
-        // },
         {
             name: "Break",
-            start: "8/2/21 5:00 PM",
+            start: "8/3/21 4:30 PM",
         },
         {
-            name: "Games/Icebreakers",
-            start: "8/2/21 6:30 PM",
-            details: "We'll play games like mafia, Quizlet live, Minecraft bedwars, Skribbl, etc. Staff will be organizing various activities in the Discord. Click the signup button below so we know how many people to plan for :)",
+            name: "PF International Topic Analysis",
+            start: "8/3/21 6:30 PM",
+            type: "zoom",
+            link: "https://zoom.us/j/99606500727?pwd=M05XdkYxTHA1KzNHMFRhTnc2RjhEUT09",
+            signup: true,
+            tag: "PF",
+        },
+        {
+            name: "LD Advanced Philosophy",
+            start: "8/3/21 6:30 PM",
+            type: "zoom",
+            link: "https://zoom.us/j/99606500727?pwd=M05XdkYxTHA1KzNHMFRhTnc2RjhEUT09",
+            signup: true,
+            tag: "LD",
+        },
+        {
+            name: "PF November/December Blockchain Topic Analysis",
+            start: "8/3/21 7:00 PM",
+            type: "zoom",
+            link: "https://zoom.us/j/99606500727?pwd=M05XdkYxTHA1KzNHMFRhTnc2RjhEUT09",
+            signup: true,
+            tag: "PF",
+        },
+        {
+            name: "Extemporaneous Speaking",
+            start: "8/3/21 7:30 PM",
+            tag: "LD + PF",
+            signup: true,
+            type: "zoom",
+            link: "https://zoom.us/j/99606500727?pwd=M05XdkYxTHA1KzNHMFRhTnc2RjhEUT09",
+
+        },
+        {
+            name: "Games (for prizes!)",
+            start: "8/3/21 8:00 PM",
+            tag: "LD + PF",
+            signup: false,
             type: "discord",
-            // signup: true,
+            details: "We'll be playing some fun browser or voice-chat based games. No Minecraft today, unfortunately.",
+            // link: "https://zoom.us/j/99606500727?pwd=M05XdkYxTHA1KzNHMFRhTnc2RjhEUT09",
+
         },
     ];
+
+    const [filter, setFilter] = useState("");
+
     return (
         <VStack spacing={8}>
-            {data.map((cal, i) => <CalendarItem cal={cal} key={`cal-item-${i + 1}`} />)}
+            <HStack>
+                <Tag onClick={() => setFilter(p => p === "LD" ? "" : "LD")}
+                     bg={filter === "LD" ? useColorModeValue("gray.300", "gray.600") : null}
+                     _hover={{
+                         bg: useColorModeValue("gray.300", "gray.600"),
+                         cursor: "pointer",
+                     }}>LD</Tag>
+                <Tag onClick={() => setFilter(p => p === "PF" ? "" : "PF")}
+                     bg={filter === "PF" ? useColorModeValue("gray.300", "gray.600") : null}
+                     _hover={{
+                         bg: useColorModeValue("gray.300", "gray.600"),
+                         cursor: "pointer",
+                     }}>PF</Tag>
+            </HStack>
+            {data
+                .filter(a => !a.tag || a.tag.includes(filter))
+                .map((cal, i) => <CalendarItem cal={cal} key={`cal-item-${i + 1}`}/>)}
         </VStack>
     );
 }
 
-function CalendarItem({ cal }) {
+function CalendarItem({ cal }){
+    const [session, loading] = useSession();
+
+    const signupProperty = (cal.name + " " + cal.start).replace(/[^A-Za-z0-9]/g, "_");
+
+    const showButton = (!cal.signup) || (cal.signup && +session.customData[signupProperty]);
     return <Box
         mx="auto"
         px={8}
@@ -211,7 +244,7 @@ function CalendarItem({ cal }) {
                 fontSize="sm"
                 color={useColorModeValue("gray.600", "gray.400")}
             >
-                {dayjs().to(cal.start)} • {dayjs(cal.start).format("dddd, MMMM Do h:mm A")}
+                {dayjs().to(cal.start)} • {dayjs(cal.start).format("dddd, MMMM Do h:mm A")} CST
             </chakra.span>
             <Text
                 px={3}
@@ -222,7 +255,7 @@ function CalendarItem({ cal }) {
                 fontWeight="700"
                 rounded="md"
             >
-                General
+                {cal.tag ?? "LD + PF"}
             </Text>
         </Flex>
 
@@ -240,24 +273,34 @@ function CalendarItem({ cal }) {
                 {cal.details}
             </chakra.p>
         </Box>
-
         <HStack>
-            {cal.type === "zoom" && <Button leftIcon={<LinkIcon />} colorScheme="blue" variant="solid" onClick={() => {
+            {(showButton && cal.type === "zoom") && <Button leftIcon={<LinkIcon />} colorScheme="blue" variant="solid" onClick={() => {
                 if (cal.link) location.href = cal.link;
                 else alert("Link not available yet! Come back when it's about to start.");
             }}>
                 Zoom
             </Button>}
-            {cal.type === "discord" &&
+            {(showButton && cal.type === "discord") &&
             <Button leftIcon={<LinkIcon />} colorScheme="purple" variant="solid" onClick={() => {
                 location.href = "https://discord.com/channels/858774360268734525/";
             }}>
                 Discord
             </Button>}
+
             {
-                cal.signup &&
-                <Button leftIcon={<AddIcon />} colorScheme="blue" variant="solid" disabled>
-                    Signup opens Monday
+                (cal.signup && !+session.customData[signupProperty]) &&
+                <Button leftIcon={<AddIcon />} colorScheme="blue" variant="outline" onClick={() => {
+                    fetch(`/api/setUserData?key=${signupProperty}&body=1`).then(() => location.reload());
+                }}>
+                    Signup
+                </Button>
+            }
+            {
+                +session.customData[signupProperty] &&
+                <Button colorScheme="green" variant="solid" onClick={() => {
+                    fetch(`/api/setUserData?key=${signupProperty}&body=0`).then(() => location.reload());
+                }}>
+                    Signed up
                 </Button>
             }
         </HStack>
