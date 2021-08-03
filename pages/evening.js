@@ -38,7 +38,7 @@ export default function Home({ people }) {
                         {tags.map(tag => (
                             <Box key={JSON.stringify(tag)} rounded="lg" shadow="lg" p={8}>
                                 <Heading>{tag.replace(/_/g, " ")}</Heading>
-                                <Heading>({people.filter(p => !!p[tag]).length})</Heading>
+                                <Heading>({people.filter(p => !!+p[tag]).length})</Heading>
                                 {people.filter(p => !!+p[tag]).map(a => <Text
                                     key={JSON.stringify(a)}>{a.registration.studentFirstName + " " + a.registration.studentLastName}</Text>)}
                             </Box>
