@@ -190,7 +190,7 @@ function Calendar() {
             name: "Games (for prizes!)",
             start: "8/3/21 8:00 PM",
             tag: "LD + PF",
-            signup: false,
+            signup: true,
             type: "discord",
             details: "We'll be playing some fun browser or voice-chat based games. No Minecraft today, unfortunately.",
             // link: "https://zoom.us/j/99606500727?pwd=M05XdkYxTHA1KzNHMFRhTnc2RjhEUT09",
