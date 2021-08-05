@@ -6,11 +6,11 @@ import { useSession } from "next-auth/client";
 export default function Home() {
     const [vote, setVote] = useState("");
     const [session, loading] = useSession();
-
+    const [rfd, setRfd] = useState("");
     return (
         <chakra.div p={12}>
             <Head>
-                <title>Superfight</title>
+                <title>RFD</title>
                 <meta name="description" content="Digitized by Samyok" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
@@ -24,11 +24,31 @@ export default function Home() {
                         }}>Affirmative</Button>
                         <Button colorScheme={"red"} variant={vote === "neg" ? "solid" : "outline"} onClick={() => {
                             setVote("neg");
-
                         }}>Negative</Button>
                     </HStack>
-                    <Textarea placeholder="Reason for decision" resize={"vertical"} />
-                    <HStack><Text>Submitting as {session?.user?.email ?? 'anonymous'}</Text> <Button variant={"outline"}>Submit</Button></HStack>
+                    <Textarea onChange={e => setRfd(e.target.value)} placeholder="Reason for decision" resize={"vertical"} />
+                    <HStack>
+                        <Text>Submitting as {session?.customData?.registration?.studentFirstName ?? session?.user?.name ?? "anonymous"}</Text>
+                        <Button
+                            variant={"outline"}
+                            onClick={() => {
+                                fetch("/api/rfd", {
+                                    method: "post",
+                                    body: JSON.stringify({
+                                        vote,
+                                        rfd,
+                                        user: session?.customData?.registration?.studentFirstName ?? session?.user?.name ?? "anonymous",
+                                    }),
+                                    headers: {
+                                        "Content-Type": "application/json",
+                                    },
+                                }).then(() => {
+                                    alert("Submitted!");
+                                    location.href = "/";
+                                });
+                            }}>Submit
+                        </Button>
+                    </HStack>
                 </VStack>
             </main>
             <footer style={{

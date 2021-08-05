@@ -166,7 +166,7 @@ function Calendar() {
             type: "Discord",
             signup: true,
             details: "Join the LD/PF Help Discord call if you want help making your case! We'll help you make your case for the tournament on Monday!",
-            tag: "LD",
+            tag: "LD + PF",
         }
     ];
 
