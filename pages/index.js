@@ -111,7 +111,7 @@ export default function Home() {
                 {/*        window.open("https://forms.gle/LAW57Aza63npbuXL6", "_blank");*/}
                 {/*    }}>DEBATE SELECTION FORM</Button>*/}
                 {/*</Flex>*/}
-                {session?.customData?.registration &&
+                {session &&
                 <Box p={[2, 4, 8]}>
                     <Tabs isManual orientation={"vertical"} variant={"soft-rounded"} colorScheme={"purple"}>
                         <TabList>
@@ -140,44 +140,34 @@ export default function Home() {
 function Calendar() {
     const data = [
         {
-            name: "DDI Day 3",
-            start: "8/4/21 1:00 PM",
-            end: "8/4/21 4:30 PM",
-            link: "https://zoom.us/j/95137034441?pwd=bzZTdE1YaGd6bmplaVN1MHJMQmRSZz09",
+            name: "DDI Day 4",
+            start: "8/5/21 1:00 PM",
+            end: "8/5/21 4:30 PM",
+            link: "https://zoom.us/j/95361686824?pwd=WEhUSC9SNFJjUFZMS3hCWW9vcXhUZz09",
             type: "zoom",
             signup: false,
             tag: "LD + PF",
         },
         {
             name: "Break",
-            start: "8/4/21 4:30 PM",
+            start: "8/5/21 4:30 PM",
         },
         {
-            name: "PF Drug Topic Analysis + Documentary",
-            start: "8/4/21 6:30 PM",
+            name: "Extemp (for real this time)",
+            start: "8/5/21 6:30 PM",
             type: "zoom",
-            link: "https://zoom.us/j/98757775462?pwd=MlRIenNzeXQvQk9BS3lnTVVKdExqdz09",
+            link: "https://zoom.us/j/96739711780?pwd=bjcwWFFIU0FjUThuUXpmNVgxbmhvQT09",
             signup: true,
-            tag: "PF",
+            tag: "LD + PF",
         },
         {
-            name: "LD Case Building / Office Hours",
-            start: "8/4/21 6:30 PM",
+            name: "Case Building / Office Hours",
+            start: "8/5/21 7:30 PM",
             type: "Discord",
             signup: true,
-            details: "Join the LD Help Discord call if you want help making your LD case! We'll help you make your case for the tournament on Monday!",
+            details: "Join the LD/PF Help Discord call if you want help making your case! We'll help you make your case for the tournament on Monday!",
             tag: "LD",
-        },
-        {
-            name: "Games (for prizes!)",
-            start: "8/4/21 8:00 PM",
-            tag: "LD + PF",
-            signup: true,
-            type: "discord",
-            details: "We'll be playing some fun browser or voice-chat based games. No Minecraft today, unfortunately.",
-            // link: "https://zoom.us/j/99606500727?pwd=M05XdkYxTHA1KzNHMFRhTnc2RjhEUT09",
-
-        },
+        }
     ];
 
     const [filter, setFilter] = useState("");
