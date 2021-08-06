@@ -9,5 +9,6 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="ddi-bot" />
+    <orderEntry type="module" module-name="brookingsdebate" />
   </component>
 </module>

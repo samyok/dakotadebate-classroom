@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../brookingsdebate/.idea/brookingsdebate.iml" filepath="$PROJECT_DIR$/../brookingsdebate/.idea/brookingsdebate.iml" />
       <module fileurl="file://$PROJECT_DIR$/../ddi-bot/.idea/ddi-bot.iml" filepath="$PROJECT_DIR$/../ddi-bot/.idea/ddi-bot.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/ddi-classroom.iml" filepath="$PROJECT_DIR$/.idea/ddi-classroom.iml" />
     </modules>

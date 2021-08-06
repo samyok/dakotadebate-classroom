@@ -140,34 +140,40 @@ export default function Home() {
 function Calendar() {
     const data = [
         {
-            name: "DDI Day 4",
-            start: "8/5/21 1:00 PM",
-            end: "8/5/21 4:30 PM",
-            link: "https://zoom.us/j/95361686824?pwd=WEhUSC9SNFJjUFZMS3hCWW9vcXhUZz09",
+            name: "DDI Day 5",
+            start: "8/6/21 1:00 PM",
+            end: "8/6/21 4:30 PM",
+            link: "https://zoom.us/j/92208439263?pwd=bzk0elhtN25RQ2tySlFkRkJKVmZSZz09",
             type: "zoom",
             signup: false,
             tag: "LD + PF",
         },
         {
             name: "Break",
-            start: "8/5/21 4:30 PM",
+            start: "8/6/21 4:30 PM",
         },
         {
-            name: "Extemp (for real this time)",
-            start: "8/5/21 6:30 PM",
+            name: "SD Rural Debate vs Debate at National Competitions (NSDA Nats or ToC Circuit)",
+            details: "Led by Srishti Kumari and Catherine Liu",
+            start: "8/6/21 6:30 PM",
             type: "zoom",
-            link: "https://zoom.us/j/96739711780?pwd=bjcwWFFIU0FjUThuUXpmNVgxbmhvQT09",
+            link: "https://zoom.us/j/92829918790?pwd=cVZtTUp1MTRyNXhKalNhSVE0TXV0QT09",
             signup: true,
             tag: "LD + PF",
         },
         {
-            name: "Case Building / Office Hours",
+            name: "Managing Debate Anxiety",
             start: "8/5/21 7:30 PM",
-            type: "Discord",
+            type: "zoom",
             signup: true,
-            details: "Join the LD/PF Help Discord call if you want help making your case! We'll help you make your case for the tournament on Monday!",
             tag: "LD + PF",
-        }
+            link: "https://zoom.us/j/92829918790?pwd=cVZtTUp1MTRyNXhKalNhSVE0TXV0QT09",
+        },
+        {
+            name: "Make your cases!",
+            start: "8/6/21 8:00 PM",
+            details: "This isn't an event, just a reminder to make your cases before the debate tournament on Monday morning!"
+        },
     ];
 
     const [filter, setFilter] = useState("");
