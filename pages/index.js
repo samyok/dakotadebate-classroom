@@ -1,11 +1,10 @@
-import Head from "next/head";
 import {
     Box,
     Button,
     chakra,
     Flex,
     Heading,
-    HStack,
+    HStack, Stack,
     Tab,
     TabList,
     TabPanel,
@@ -16,12 +15,13 @@ import {
     useColorModeValue,
     VStack,
 } from "@chakra-ui/react";
-import Navigation from "../components/navigation";
 import { useSession } from "next-auth/client";
 import * as dayjs from "dayjs";
 import * as relativeTime from "dayjs/plugin/relativeTime"; // import plugin
 import * as advancedFormat from "dayjs/plugin/advancedFormat";
 import { AddIcon, LinkIcon } from "@chakra-ui/icons";
+import Navigation from "../components/navigation";
+import Head from "next/head";
 import { useState } from "react";
 
 dayjs.extend(relativeTime);
@@ -30,27 +30,150 @@ dayjs.extend(advancedFormat);
 export default function Home() {
     const [session, loading] = useSession();
     console.log(session);
+
+    let whiteColor = useColorModeValue("white", "gray.800");
+    let grayColor = useColorModeValue("gray.600", "gray.400");
+    let blackColor = useColorModeValue("gray.700", "white");
+    let detailColor = useColorModeValue("gray.600", "gray.300");
     const data = [{ label: "Schedule", content: <Calendar /> }, {
         label: "Office Hours",
         content: "After you finalize your type of debate at the end of class on Monday, you can sign up for office hours here. Feel free to join a Discord call if you see a staff member available, too!",
     }, {
         label: "Past Classes",
-        content: <Box
+        content: <VStack spacing={8}>{[
+            {
+                title: "Day 1",
+                time: "8/2/2021",
+                tag: "LD + PF",
+                details: "Everything from day 1 was in one big meeting.",
+                links: [
+                    {
+                        color: "blue",
+                        link: "https://youtu.be/verMLyj3OIY",
+                        text: "Recorded Zoom",
+                    },
+                    {
+                        color: "yellow",
+                        link: "https://docs.google.com/presentation/d/1iBmmMU6RbrC5SAOA5RTEUvNGNzzlBXQG1mjPA7FECUo/edit#slide=id.ga25f85cae5_0_0",
+                        text: "Slides",
+                    },
+                ],
+            },
+            {
+                title: "Day 2",
+                time: "8/3/2021",
+                tag: "LD + PF",
+                links: [
+                    {
+                        color: "blue",
+                        link: "#",
+                        text: "Zoom video still processing",
+                    },
+                    {
+                        color: "yellow",
+                        link: "https://docs.google.com/presentation/d/1Xuuab_gzfw8D86RXl5jBAd_CLSt4KiQA-odm4LaUVTg/edit#slide=id.ga25f85cae5_0_0",
+                        text: "LD Slides",
+
+                    },
+                    {
+                        color: "purple",
+                        link: "https://docs.google.com/presentation/d/1jya33hxxZExm_4rQ7VNxIffqLxOZ5GecionCAQ6ke7U/edit?usp=sharing",
+                        text: "PF Slides"
+                    }
+                ],
+            },
+            {
+                title: "Day 3",
+                time: "8/4/2021",
+                tag: "LD + PF",
+                links: [
+                    {
+                        color: "blue",
+                        link: "#",
+                        text: "Zoom video still processing",
+                    },
+                    {
+                        color: "yellow",
+                        link: "https://docs.google.com/presentation/d/1dqccEgYBh-VU0rjCakBRGR9Owsy4dFQZuTNfp39D0W0/edit?usp=sharing",
+                        text: "LD Slides",
+
+                    },
+
+                    {
+                        color: "purple",
+                        link: "https://docs.google.com/presentation/d/1v97XoyJ9vQZPKPe_NecXgI29QXC2yJvkbLkvVsrFj1A/edit?usp=sharingg",
+                        text: "PF Slides"
+                    }
+                ],
+            },
+
+            {
+                title: "Day 4",
+                time: "8/5/2021",
+                tag: "LD + PF",
+                links: [
+                    {
+                        color: "blue",
+                        link: "#",
+                        text: "Zoom video still processing",
+                    },
+                    {
+                        color: "yellow",
+                        link: "https://docs.google.com/presentation/d/1d6tCUYFxn5ZsQhqTovQ-oA3wQGsIylLxx2sgb3vs1Qw/edit?usp=sharing",
+                        text: "LD Slides",
+                    },
+                    {
+                        color: "yellow",
+                        link: "https://docs.google.com/document/d/1tRAGQGFfQmOAe5t7MgMXEQhNGfAaDUCw/edit?rtpof=true&sd=true",
+                        text: "LD Example Aff"
+                    },
+                    {
+                        color: "purple",
+                        link: "https://docs.google.com/presentation/d/1OstrBsSK-5jXu4GGAVDJiN7zc5EkquzCIJshrX1nKb0/edit?usp=sharing",
+                        text: "PF Slides"
+                    }
+                ],
+            },
+            {
+                title: "Day 5",
+                time: "8/6/2021",
+                tag: "LD + PF",
+                links: [
+                    {
+                        color: "blue",
+                        link: "#",
+                        text: "Zoom video still processing",
+                    },
+                    {
+                        color: "yellow",
+                        link: "https://docs.google.com/presentation/d/1CbrhksvvkAC8kTueFyp_BP348liErK7cNfMliIJO1QE/edit?usp=sharing",
+                        text: "LD Slides",
+
+                    },
+                    {
+                        color: "purple",
+                        link: "https://docs.google.com/presentation/d/1aDr9ikUrCPjikOTcsXinG6Oa08RxBC-zB8ATtACue-g/edit?usp=sharing",
+                        text: "PF Slides"
+                    }
+                ],
+            },
+        ].map((pastClass, index) => <Box
+            key={"class-" + index}
             mx="auto"
             px={8}
             w={"100%"}
             py={4}
             rounded="lg"
             shadow="lg"
-            bg={useColorModeValue("white", "gray.800")}
+            bg={whiteColor}
             maxW="2xl"
         >
             <Flex justifyContent="space-between" alignItems="center">
                 <chakra.span
                     fontSize="sm"
-                    color={useColorModeValue("gray.600", "gray.400")}
+                    color={grayColor}
                 >
-                    Monday, August 1
+                    {dayjs(pastClass.time).format("dddd, MMMM Do")}
                 </chakra.span>
                 <Text
                     px={3}
@@ -69,30 +192,27 @@ export default function Home() {
                 <Heading
 
                     fontSize="2xl"
-                    color={useColorModeValue("gray.700", "white")}
+                    color={blackColor}
                     fontWeight="700"
                 >
-                    Introduction Day
+                    {pastClass.title}
                 </Heading>
-                <chakra.p mt={2} color={useColorModeValue("gray.600", "gray.300")}
+                <chakra.p mt={2} color={detailColor}
                 >
-                    Everything from day 1 was in one big meeting.
                 </chakra.p>
             </Box>
 
-            <HStack>
-                <Button leftIcon={<LinkIcon />} colorScheme="blue" variant="solid" onClick={() => {
-                    window.open("https://youtu.be/verMLyj3OIY", "_blank");
-                }}>
-                    Recorded Zoom Video
-                </Button>
-                <Button leftIcon={<LinkIcon />} colorScheme="yellow" variant="solid" onClick={() => {
-                    window.open("https://docs.google.com/presentation/d/1iBmmMU6RbrC5SAOA5RTEUvNGNzzlBXQG1mjPA7FECUo/edit#slide=id.ga25f85cae5_0_0", "_blank");
-                }}>
-                    Slides
-                </Button>
-            </HStack>
-        </Box>,
+            <Stack>
+                {pastClass.links.map((link, i) => <Button key={"btn" + i} leftIcon={<LinkIcon />}
+                                                          colorScheme={link.color}
+                                                          variant="solid"
+                                                          onClick={() => {
+                                                              window.open(link.link, "_blank");
+                                                          }}>
+                    {link.text}
+                </Button>)}
+            </Stack>
+        </Box>)}</VStack>,
     }];
     let tabBorderLeft = useColorModeValue("1px solid rgba(112, 70, 234, 0.6)", "1px solid rgba(112, 70, 234, 0.2)");
     return (
@@ -172,7 +292,7 @@ function Calendar() {
         {
             name: "Make your cases!",
             start: "8/6/21 8:00 PM",
-            details: "This isn't an event, just a reminder to make your cases before the debate tournament on Monday morning!"
+            details: "This isn't an event, just a reminder to make your cases before the debate tournament on Monday morning!",
         },
     ];
 
