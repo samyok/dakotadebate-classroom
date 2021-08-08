@@ -23,6 +23,7 @@ import { AddIcon, LinkIcon } from "@chakra-ui/icons";
 import Navigation from "../components/navigation";
 import Head from "next/head";
 import { useState } from "react";
+import Tournament from "../components/tournament";
 
 dayjs.extend(relativeTime);
 dayjs.extend(advancedFormat);
@@ -36,8 +37,8 @@ export default function Home() {
     let blackColor = useColorModeValue("gray.700", "white");
     let detailColor = useColorModeValue("gray.600", "gray.300");
     const data = [{ label: "Schedule", content: <Calendar /> }, {
-        label: "Office Hours",
-        content: "After you finalize your type of debate at the end of class on Monday, you can sign up for office hours here. Feel free to join a Discord call if you see a staff member available, too!",
+        label: "Tournament",
+        content: <Tournament/>,
     }, {
         label: "Past Classes",
         content: <VStack spacing={8}>{[
@@ -128,6 +129,11 @@ export default function Home() {
                         text: "LD Example Aff"
                     },
                     {
+                        color: "yellow",
+                        link: "https://docs.google.com/document/d/14XaCgoH1Iy7N8M3_LBnVUUueL5FRjIRK/edit?usp=sharing&ouid=114928060533144725949&rtpof=true&sd=true",
+                        text: "LD Example Neg"
+                    },
+                    {
                         color: "purple",
                         link: "https://docs.google.com/presentation/d/1OstrBsSK-5jXu4GGAVDJiN7zc5EkquzCIJshrX1nKb0/edit?usp=sharing",
                         text: "PF Slides"
@@ -190,15 +196,13 @@ export default function Home() {
 
             <Box mt={2} mb={4}>
                 <Heading
-
                     fontSize="2xl"
                     color={blackColor}
                     fontWeight="700"
                 >
                     {pastClass.title}
                 </Heading>
-                <chakra.p mt={2} color={detailColor}
-                >
+                <chakra.p mt={2} color={detailColor}>
                 </chakra.p>
             </Box>
 
