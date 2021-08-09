@@ -1,6 +1,14 @@
 import GoogleSpreadsheet from "google-spreadsheet/lib/GoogleSpreadsheet";
+import cacheData from "memory-cache";
 
 export default async function handler(req, res) {
+
+    if (cacheData.get("rooms")) {
+
+        res.setHeader("x-cached", "true");
+        return res.json(cacheData.get("rooms"));
+    }
+
     const doc = new GoogleSpreadsheet("1UgrWOk-AVYIg8z1pTiHtcNuhqnxTfWUEX3zpX4Vh8FI");
 
     // or preferably, loading that info from env vars / config instead of the file
@@ -79,5 +87,6 @@ export default async function handler(req, res) {
         thisRound.rooms = thisRound.rooms.filter(a => !!a.teams.length && !!a.teams[0].members.length);
         rounds.push(thisRound);
     }
+    cacheData.put("rooms", rounds, 60 * 1000);
     res.json(rounds);
 }
