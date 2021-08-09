@@ -45,6 +45,8 @@ export default function Tournament() {
         fetch("/api/tournament/rooms").then(r => r.json()).then(r => setRounds(r));
     }, []);
 
+    console.log(rounds);
+
     return <VStack spacing={20}>
 
         {
