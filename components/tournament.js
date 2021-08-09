@@ -88,14 +88,14 @@ const rounds = [
 
 function Room({ room }) {
     const judgeTextColor = useColorModeValue('gray.500', 'gray.200');
-    const judgeColor = useColorModeValue('gray.200', 'gray.700');
+    const judgeColor = useColorModeValue('gray.50', 'gray.700');
 
     const bkgColor = useColorModeValue('#A690FF', '#72E0F8');
     const vcColor = useColorModeValue('#7046EA', '#53A5B7');
     const vcTextColor = useColorModeValue('#A690FF', 'white');
 
-    return <VStack w={'400px'}  backgroundColor={bkgColor} >
-        <HStack width={'100%'} justifyContent={'center'} p={1} fontWeight={'bold'} backgroundColor={vcColor} color={'white'}>
+    return <VStack w={'500px'} rounded={'lg'} shadow={'lg'} backgroundColor={bkgColor} >
+        <HStack width={'100%'} rounded={'lg'} justifyContent={'center'} p={1} fontWeight={'bold'} backgroundColor={vcColor} color={'white'}>
             <BsFillVolumeUpFill size={20}/>
             <Box>
                 { room.vc}
@@ -114,7 +114,7 @@ function Room({ room }) {
             </VStack>
         </HStack>)
         }
-        <Box width={'100%'} p={2} fontWeight={'bolder'} textAlign={'center'} color={judgeTextColor} backgroundColor={judgeColor}>
+        <Box width={'100%'} p={2} rounded={'lg'} fontWeight={'bolder'} textAlign={'center'} color={judgeTextColor} backgroundColor={judgeColor}>
             Judged by {room.judge.name}
         </Box>
     </VStack>;
