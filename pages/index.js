@@ -335,7 +335,7 @@ function CalendarItem({ cal }) {
 
     const signupProperty = (cal.name + " " + cal.start).replace(/[^A-Za-z0-9]/g, "_");
 
-    const showButton = (!cal.signup) || (cal.signup && +session.customData[signupProperty]);
+    const showButton = (!cal.signup) || (cal.signup && session?.customData && +session.customData[signupProperty]);
     return <Box
         mx="auto"
         px={8}
@@ -396,14 +396,14 @@ function CalendarItem({ cal }) {
             </Button>}
 
             {
-                (cal.signup && !+session.customData[signupProperty]) &&
+                (cal.signup  && session?.customData && !+session.customData[signupProperty]) &&
                 <Button leftIcon={<AddIcon />} colorScheme="blue" variant="outline" onClick={() => {
                     fetch(`/api/setUserData?key=${signupProperty}&body=1`).then(() => location.reload());
                 }}>
                     Signup
                 </Button>
             }
-            {
+            { session?.customData &&
                 +session.customData[signupProperty] &&
                 <Button colorScheme="green" variant="solid" onClick={() => {
                     fetch(`/api/setUserData?key=${signupProperty}&body=0`).then(() => location.reload());
