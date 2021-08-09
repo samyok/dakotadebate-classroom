@@ -9,8 +9,8 @@ function Room({ room }) {
     const bkgColor = useColorModeValue('#DBD1FF', '#72E0F8');
     const vcColor = useColorModeValue('#B5A3FF', '#53A5B7');
 
-    return <VStack w={"400px"} backgroundColor={bkgColor}>
-        <HStack width={"100%"} justifyContent={"center"} p={1} fontWeight={"bold"} backgroundColor={vcColor}
+    return <VStack w={"400px"} rounded={'lg'} shadow={'lg'} backgroundColor={bkgColor}>
+        <HStack width={"100%"} rounded={'lg'} justifyContent={"center"} p={1} fontWeight={"bold"} backgroundColor={vcColor}
                 color={"white"}>
             <BsFillVolumeUpFill size={20} />
             <Box>
@@ -30,7 +30,7 @@ function Room({ room }) {
             </VStack>
         </HStack>)
         }
-        <Box width={"100%"} p={2} fontWeight={"bolder"} textAlign={"center"} color={judgeTextColor}
+        <Box width={"100%"} p={2} rounded={'lg'} fontWeight={"bolder"} textAlign={"center"} color={judgeTextColor}
              backgroundColor={judgeColor}>
             Judged by {room.judge.name}
         </Box>
