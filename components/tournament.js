@@ -87,11 +87,11 @@ const rounds = [
 ];
 
 function Room({ room }) {
-    const judgeTextColor = useColorModeValue('gray.500', 'gray.200');
+    const judgeTextColor = useColorModeValue('gray.700', 'gray.200');
     const judgeColor = useColorModeValue('gray.50', 'gray.700');
 
-    const bkgColor = useColorModeValue('#A690FF', '#72E0F8');
-    const vcColor = useColorModeValue('#7046EA', '#53A5B7');
+    const bkgColor = useColorModeValue('#DBD1FF', '#72E0F8');
+    const vcColor = useColorModeValue('#B5A3FF', '#53A5B7');
     const vcTextColor = useColorModeValue('#A690FF', 'white');
 
     return <VStack w={'500px'} rounded={'lg'} shadow={'lg'} backgroundColor={bkgColor} >
@@ -102,10 +102,10 @@ function Room({ room }) {
             </Box>
         </HStack>
         {room.teams.map((team) => 
-        <HStack width={'100%'} p={[4, 6]} justifyContent={'space-between'}>
-            <HStack fontWeight={'bold'} fontSize={'24px'}>
-                {team.side ? <Box>{team.side}</Box> : <></>}
-                <Box>
+        <HStack width={'100%'} p={[4, 6]} color={'gray.700'} justifyContent={'space-between'}>
+            <HStack fontWeight={'bold'}>
+                {team.side ? <Box fontSize={'20px'} m={2} color={'gray.50'} backgroundColor={vcColor} rounded={'lg'} p={1}> {team.side} </Box> : <></>}
+                <Box fontSize={'24px'}>
                     {team.id}
                 </Box>
             </HStack>
