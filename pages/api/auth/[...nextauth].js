@@ -21,9 +21,7 @@ export default NextAuth({
             const db = client.db('brookingsdebate');
             const collection = db.collection('accounts');
             let rslt = await collection.findOne({userId: user.id});
-            console.log('sess', rslt.userId);
             let customData = await db.collection('ddiUsers').findOne({userId: rslt.userId.toString()});
-            console.log('sess', customData);
             return {
                 ...session,
                 user: {

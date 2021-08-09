@@ -4,7 +4,8 @@ import {
     chakra,
     Flex,
     Heading,
-    HStack, Stack,
+    HStack,
+    Stack,
     Tab,
     TabList,
     TabPanel,
@@ -24,6 +25,7 @@ import Navigation from "../components/navigation";
 import Head from "next/head";
 import { useState } from "react";
 import Tournament from "../components/tournament";
+import RFDs from "../components/RFDs";
 
 dayjs.extend(relativeTime);
 dayjs.extend(advancedFormat);
@@ -38,7 +40,10 @@ export default function Home() {
     let detailColor = useColorModeValue("gray.600", "gray.300");
     const data = [{ label: "Schedule", content: <Calendar /> }, {
         label: "Tournament",
-        content: <Tournament/>,
+        content: <Tournament />,
+    }, {
+        label: "Ballots",
+        content: <RFDs />,
     }, {
         label: "Past Classes",
         content: <VStack spacing={8}>{[
@@ -79,8 +84,8 @@ export default function Home() {
                     {
                         color: "purple",
                         link: "https://docs.google.com/presentation/d/1jya33hxxZExm_4rQ7VNxIffqLxOZ5GecionCAQ6ke7U/edit?usp=sharing",
-                        text: "PF Slides"
-                    }
+                        text: "PF Slides",
+                    },
                 ],
             },
             {
@@ -103,8 +108,8 @@ export default function Home() {
                     {
                         color: "purple",
                         link: "https://docs.google.com/presentation/d/1v97XoyJ9vQZPKPe_NecXgI29QXC2yJvkbLkvVsrFj1A/edit?usp=sharingg",
-                        text: "PF Slides"
-                    }
+                        text: "PF Slides",
+                    },
                 ],
             },
 
@@ -126,18 +131,18 @@ export default function Home() {
                     {
                         color: "yellow",
                         link: "https://docs.google.com/document/d/1tRAGQGFfQmOAe5t7MgMXEQhNGfAaDUCw/edit?rtpof=true&sd=true",
-                        text: "LD Example Aff"
+                        text: "LD Example Aff",
                     },
                     {
                         color: "yellow",
                         link: "https://docs.google.com/document/d/14XaCgoH1Iy7N8M3_LBnVUUueL5FRjIRK/edit?usp=sharing&ouid=114928060533144725949&rtpof=true&sd=true",
-                        text: "LD Example Neg"
+                        text: "LD Example Neg",
                     },
                     {
                         color: "purple",
                         link: "https://docs.google.com/presentation/d/1OstrBsSK-5jXu4GGAVDJiN7zc5EkquzCIJshrX1nKb0/edit?usp=sharing",
-                        text: "PF Slides"
-                    }
+                        text: "PF Slides",
+                    },
                 ],
             },
             {
@@ -159,8 +164,8 @@ export default function Home() {
                     {
                         color: "purple",
                         link: "https://docs.google.com/presentation/d/1aDr9ikUrCPjikOTcsXinG6Oa08RxBC-zB8ATtACue-g/edit?usp=sharing",
-                        text: "PF Slides"
-                    }
+                        text: "PF Slides",
+                    },
                 ],
             },
         ].map((pastClass, index) => <Box
@@ -264,40 +269,40 @@ export default function Home() {
 function Calendar() {
     const data = [
         {
-            name: "DDI Day 5",
-            start: "8/6/21 1:00 PM",
-            end: "8/6/21 4:30 PM",
-            link: "https://zoom.us/j/92208439263?pwd=bzk0elhtN25RQ2tySlFkRkJKVmZSZz09",
-            type: "zoom",
-            signup: false,
-            tag: "LD + PF",
-        },
-        {
-            name: "Break",
-            start: "8/6/21 4:30 PM",
-        },
-        {
-            name: "SD Rural Debate vs Debate at National Competitions (NSDA Nats or ToC Circuit)",
-            details: "Led by Srishti Kumari and Catherine Liu",
-            start: "8/6/21 6:30 PM",
-            type: "zoom",
-            link: "https://zoom.us/j/92829918790?pwd=cVZtTUp1MTRyNXhKalNhSVE0TXV0QT09",
+            name: "DDI Tournament",
+            start: "8/9/21 9:30 AM",
+            end: "8/9/21 4:30 PM",
+            type: "discord",
             signup: true,
+            details: "Hit the signup button to check in :)",
             tag: "LD + PF",
         },
-        {
-            name: "Managing Debate Anxiety",
-            start: "8/5/21 7:30 PM",
-            type: "zoom",
-            signup: true,
-            tag: "LD + PF",
-            link: "https://zoom.us/j/92829918790?pwd=cVZtTUp1MTRyNXhKalNhSVE0TXV0QT09",
-        },
-        {
-            name: "Make your cases!",
-            start: "8/6/21 8:00 PM",
-            details: "This isn't an event, just a reminder to make your cases before the debate tournament on Monday morning!",
-        },
+        // {
+        //     name: "Break",
+        //     start: "8/6/21 4:30 PM",
+        // },
+        // {
+        //     name: "SD Rural Debate vs Debate at National Competitions (NSDA Nats or ToC Circuit)",
+        //     details: "Led by Srishti Kumari and Catherine Liu",
+        //     start: "8/6/21 6:30 PM",
+        //     type: "zoom",
+        //     link: "https://zoom.us/j/92829918790?pwd=cVZtTUp1MTRyNXhKalNhSVE0TXV0QT09",
+        //     signup: true,
+        //     tag: "LD + PF",
+        // },
+        // {
+        //     name: "Managing Debate Anxiety",
+        //     start: "8/5/21 7:30 PM",
+        //     type: "zoom",
+        //     signup: true,
+        //     tag: "LD + PF",
+        //     link: "https://zoom.us/j/92829918790?pwd=cVZtTUp1MTRyNXhKalNhSVE0TXV0QT09",
+        // },
+        // {
+        //     name: "Make your cases!",
+        //     start: "8/6/21 8:00 PM",
+        //     details: "This isn't an event, just a reminder to make your cases before the debate tournament on Monday morning!",
+        // },
     ];
 
     const [filter, setFilter] = useState("");

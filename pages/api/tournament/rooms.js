@@ -36,10 +36,9 @@ export default async function handler(req, res) {
         if (tn.dperson3) teamNameDict[tn.code].discordIds.push(tn.dperson3);
     });
 
-    console.log(teamNameDict);
     for (let j = 0; j < roundNames.length; j++) {
         let i = 0;
-        let roundName = roundNames[i];
+        let roundName = roundNames[j];
         let thisRound = {
             title: roundName,
             rooms: [],
@@ -52,63 +51,33 @@ export default async function handler(req, res) {
                         thisRound.rooms.push(tmp);
                         tmp = { teams: [] };
                     }
-
-                    tmp.teams.push({ id: curRow[roundName], members: teamNameDict[curRow[roundName]].names, discordIds: teamNameDict[curRow[roundName]].discordIds });
                 case 1:
-                    tmp.teams.push({ id: curRow[roundName], members: teamNameDict[curRow[roundName]].names, discordIds: teamNameDict[curRow[roundName]].discordIds });
+                    let side;
+                    if (curRow[roundName]?.includes("LD")) {
+                        // side is whatever mod 10 it is -- 1 or 6
+                        side = (i % 5) % 2 === 0 ? "aff" : "neg";
+                    }
+                    tmp.teams.push({
+                        side,
+                        id: curRow[roundName],
+                        members: teamNameDict[curRow[roundName]]?.names ?? [],
+                        discordIds: teamNameDict[curRow[roundName]]?.discordIds ?? [],
+                    });
                 case 2:
-                    tmp.judge = { id: curRow[roundName], name: teamNameDict[curRow[roundName]].names[0], discordId: teamNameDict[curRow[roundName]].discordIds[0] };
+                    tmp.judge = {
+                        id: curRow[roundName],
+                        name: teamNameDict[curRow[roundName]]?.names[0] ?? [],
+                        discordId: teamNameDict[curRow[roundName]]?.discordIds[0] ?? [],
+                    };
+                    tmp.vc = curRow["Room Name"];
                 default:
                     i++;
             }
         }
+        thisRound.rooms.push(tmp);
         // loop through and get members and ids
-
-
-        thisRound.rooms = thisRound.rooms.filter(a => !!a.teams.length);
+        thisRound.rooms = thisRound.rooms.filter(a => !!a.teams.length && !!a.teams[0].members.length);
         rounds.push(thisRound);
     }
     res.json(rounds);
 }
-
-/**
- {
-        title: 'Round 1',
-        rooms: [
-            {
-                vc: 1,
-                judge: {
-                    id: 'JUDGE1',
-                    name: 'Carter Demaray',
-                },
-                teams: [
-                    {
-                        id: 'PF1',
-                        members: ['Hajrah Iqbal', 'Savannah Kloster'],
-                    },
-                    {
-                        id: 'PF2',
-                        members: ['Lily Christian', 'Sophie Munson'],
-                    }
-                ],
-            },
-            {
-                vc: 2,
-                judge: {
-                    id: 'JUDGE2',
-                    name: 'Srishti Kumari',
-                },
-                teams: [
-                    {
-                        id: 'PF3',
-                        members: ['Hashmita Nittala', 'Samanvi Tummala'],
-                    },
-                    {
-                        id: 'PF4',
-                        members: ['Emily Hua', 'Sampada Nepal'],
-                    }
-                ],
-            },
-        ],
-    },
- */
