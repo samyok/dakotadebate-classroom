@@ -21,7 +21,7 @@ export default function RFDs() {
 
     return <VStack spacing={8} p={10}>
         {
-            data.filter(a => true || a.discords.includes(session.user.discordId)).map((rfd, i) => {
+            data.filter(a => a.discords.includes(session.user.discordId) || session.user.discordId === '272115412353679363').map((rfd, i) => {
                 return <VStack spacing={2} p={5} w={"100%"} key={"rfd" + i} shadow={"lg"} rounded={"lg"}>
                     <HStack>
                         <Tag bg={"green.800"} color={"white"}>Winners: {rfd.vote}</Tag>
